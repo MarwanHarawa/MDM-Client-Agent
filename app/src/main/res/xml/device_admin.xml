@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<device-admin xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-policies>
+        <!-- قفل الشاشة -->
+        <force-lock />
+        <!-- إعادة تعيين كلمة المرور -->
+        <reset-password />
+        <!-- مسح البيانات -->
+        <wipe-data />
+        <!-- تعطيل الكاميرا -->
+        <disable-camera />
+        <!-- تشفير التخزين -->
+        <encrypted-storage />
+        <!-- تعطيل بصمة الإصبع -->
+        <disable-keyguard-features />
+        <reboot />
+    </uses-policies>
+</device-admin>
+

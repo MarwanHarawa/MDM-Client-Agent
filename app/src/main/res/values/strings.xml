@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">MDM Client</string>
+    <string name="device_admin_activation_message">يجب تفعيل مسؤول الجهاز لاستخدام ميزات MDM</string>
+    <string name="admin_activation_failed">فشل تفعيل مسؤول الجهاز. لا يمكن تشغيل التطبيق بدون هذه الصلاحية.</string>
+    <string name="service_started">تم بدء خدمة MDM</string>
+    <string name="device_admin_enabled">تم تفعيل مسؤول الجهاز</string>
+    <string name="device_admin_disabled">تم تعطيل مسؤول الجهاز</string>
+    <string name="device_admin_disable_warning">تعطيل مسؤول الجهاز سيوقف جميع وظائف MDM!</string>
+    <string name="notification_title">خدمة MDM تعمل</string>
+    <string name="notification_text">في انتظار الأوامر...</string>
+    <string name="default_notification_channel_id">fcm_default_channel</string>
+    <string name="device_admin_description">تطبيق إدارة الأجهزة المحمولة - يسمح بالتحكم عن بُعد في الجهاز</string>
+    <string name="admin_enabled">تم تفعيل صلاحيات المدير بنجاح</string>
+    <string name="admin_disabled">تم إلغاء تفعيل صلاحيات المدير</string>
+    <string name="enable_admin">تفعيل صلاحيات المدير</string>
+    <string name="admin_required">يجب تفعيل صلاحيات المدير لعمل التطبيق</string>
+    <string name="fcm_registered">تم تسجيل الجهاز بنجاح</string>
+    <string name="fcm_registration_failed">فشل في تسجيل الجهاز</string>
+    <string name="command_executed">تم تنفيذ الأمر: %s</string>
+    <string name="command_failed">فشل في تنفيذ الأمر: %s</string>
+    <string name="service_running">خدمة MDM تعمل في الخلفية</string>
+    <string name="device_locked">تم قفل الجهاز</string>
+    <string name="camera_disabled">تم تعطيل الكاميرا</string>
+    <string name="camera_enabled">تم تمكين الكاميرا</string>
+    <string name="device_rebooting">جاري إعادة تشغيل الجهاز</string>
+    <string name="play_store_blocked">تم منع متجر جوجل بلاي</string>
+    <string name="admin_description">يتطلب التطبيق صلاحيات مدير الجهاز لتطبيق سياسات الأمان</string>
+
+</resources>
