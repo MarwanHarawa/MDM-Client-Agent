@@ -1,19 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<device-admin xmlns:android="http://schemas.android.com/apk/res/android">
-    <uses-policies>
-        <!-- قفل الشاشة -->
-        <force-lock />
-        <!-- إعادة تعيين كلمة المرور -->
-        <reset-password />
-        <!-- مسح البيانات -->
-        <wipe-data />
-        <!-- تعطيل الكاميرا -->
-        <disable-camera />
-        <!-- تشفير التخزين -->
-        <encrypted-storage />
-        <!-- تعطيل بصمة الإصبع -->
-        <disable-keyguard-features />
-        <reboot />
-    </uses-policies>
-</device-admin>
-
+     <device-admin xmlns:android="http://schemas.android.com/apk/res/android">
+         <uses-policies>
+             <limit-password />
+             <watch-login />
+             <reset-password />
+             <wipe-data />
+             <expire-password />
+             <set-system-settings />
+             <set-time />
+             <set-user-restriction />
+             <enable-system-setting />
+             <install-unknown-sources-allowed />
+             <install-ca-certificate />
+             <install-existing-package />
+             <uninstall-blocked />
+             <wipe-external-storage />
+             <set-application-restrictions />
+             <set-backup-service-enabled />
+             <set-bluetooth-contact-sharing-disabled />
+             <set-screen-capture-disabled />
+             <set-system-update-policy />
+             <set-usb-data-transfer-disabled />
+             <set-network-reset-disabled />
+             <set-factory-reset-protection-policy />
+             <set-user-control-disabled-packages />
+             <set-permission-grant-state />
+             <set-permission-policy />
+             <set-recommended-global-proxy />
+             <set-always-on-vpn-package />
+             <set-long-support-message />
+             <set-short-support-message />
+             <set-organization-color />
+             <set-organization-name />
+             <set-personal-apps-suspended />
+             <set-status-bar-disabled />
+             <set-keyguard-disabled />
+             <set-lock-screen-messages />
+             <set-screen-off-timeout />
+             <set-time-zone />
+             <set-user-restriction />
+             <add-user />
+             <remove-user />
+             <switch-user />
+             <reboot />
+             <!-- لمسح الجهاز بالكامل -->
+             <wipe-data />
+             <!-- لإعادة تشغيل الجهاز -->
+             <reboot />
+             <!-- لقفل الجهاز -->
+             <force-lock />
+             <!-- لفرض سياسات كلمة المرور -->
+             <encrypted-storage />
+             <disable-keyguard-features />
+             <!-- لتعطيل الكاميرا -->
+             <disable-camera />
+             <!-- للتحكم في التطبيقات والقيود -->
+             <set-global-setting />
+             <set-secure-setting />
+             <!-- لمنع إعادة ضبط المصنع والتحكم في البلوتوث وغيرها -->
+             <set-user-restrictions />
+         </uses-policies>
+     </device-admin>

